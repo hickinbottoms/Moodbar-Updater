@@ -1,0 +1,40 @@
+* Moodbar Updater
+
+This is a simple utility that will scan a directory tree containing audio files and refresh the accompanying [[http://amarok.kde.org/wiki/Moodbar][Moodbar]] analysis files (.mood files) as necessary.
+
+The utility is simply passed the root directory of the music hierarchy and then gets on with it.
+
+The intention is that the script would be run interactively to initially set up the =.mood= files, then schedule the updater to run automatically -- for example as a /cron/ job. To make this more reliable a lock is employed to ensure that only one updater can be working on a given root directory at a time.
+
+* Dependencies
+
+The script has a few Perl dependencies, all of which are available from CPAN if they're not already in your Perl installation:
+- =Getopt::Long=
+- =Pod::Usage=
+- =File::Find=
+- =File::Basename=
+- =Lockfile::Simple=
+
+Of course, it also depends on the Moodbar utility itself, to create the Moodbar files:
+- http://amarok.kde.org/wiki/Moodbar
+
+* Usage
+
+#+begin_quote
+moodbar-updater.pl [options]
+
+ Options:
+   -help           Show this help description
+   -verbose        Output progress messages
+
+   -root           Root directory of music to scan
+#+end_quote
+
+Example:
+#+begin_example
+moodbar-updater.pl -root /mnt/media/Music
+#+end_example
+
+* Still to do:
+- Remove =.mood= files when the accompanying music files no longer exists. This is useful in case the music file has been renamed.
+- Check the =moodbar= utility is available and give a helpful error if not.
