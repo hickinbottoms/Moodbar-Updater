@@ -20,7 +20,7 @@ Of course, it also depends on the Moodbar utility itself, to create the Moodbar 
 
 * Usage
 
-#+begin_quote
+#+begin_example
 moodbar-updater.pl [options]
 
  Options:
@@ -28,7 +28,7 @@ moodbar-updater.pl [options]
    -verbose        Output progress messages
 
    -root           Root directory of music to scan
-#+end_quote
+#+end_example
 
 Example:
 #+begin_example
