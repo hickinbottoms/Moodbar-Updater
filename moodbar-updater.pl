@@ -34,14 +34,20 @@ umask(0027);
 
 # Process command-line arguments
 my $verbose = "";
+my $hidden = "";
 my $root = DEFAULT_ROOT;
 GetOptions("verbose" => \$verbose,
+	   "hidden" => \$hidden,
 	   "root=s" => \$root,
 	   "help|?" => sub { pod2usage(1) })
   or die "Failed to understand command options";
 
+# If we're asked to hide the mood files then prefix them with '.'.
+my $prefix = $hidden ? '.' : '';
+
 # Output options in use
 print "Music root directory: $root\n" if $verbose;
+print "Mood file prefix: $prefix\n" if $verbose;
 print "\n" if $verbose;
 
 # Make sure the output directory exists, and is empty.
@@ -76,7 +82,7 @@ sub doFile {
   # we're interested.
   return if (!exists($suffixes{$suffix}));
 
-  my $moodpath = "$directory$basename.mood";
+  my $moodpath = "$directory$prefix$basename.mood";
 
   # We've only got to make a moodbar file if it doesn't exist or the
   # music file has been updated since the moodbar file was created.
@@ -105,5 +111,6 @@ moodbar-updater.pl [options]
    -verbose        Output progress messages
 
    -root           Root directory of music to scan
+   -hidden         Prefix mood files with '.' to hide them
 
 =cut
