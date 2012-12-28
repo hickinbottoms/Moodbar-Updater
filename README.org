@@ -28,13 +28,14 @@ moodbar-updater.pl [options]
    -verbose        Output progress messages
 
    -root           Root directory of music to scan
+   -hidden         Prefix mood files with '.' to hide them
 #+end_example
 
 Example:
 #+begin_example
-moodbar-updater.pl -root /mnt/media/Music
+moodbar-updater.pl -hidden -root /mnt/media/Music
 #+end_example
 
 * Still to do:
-- Remove =.mood= files when the accompanying music files no longer exists. This is useful in case the music file has been renamed.
+- Remove =.mood= files when the accompanying music files no longer exists. This is useful in case the music file has been renamed, for example.
 - Check the =moodbar= utility is available and give a helpful error if not.
