@@ -1,3 +1,6 @@
+all:
+	@echo Try \'make install\'
+
 install:
-	sudo cp moodbar-updater.pl /etc/cron.weekly
-	sudo chmod +x /etc/cron.weekly/moodbar-updater.pl
+	sudo install --mode=555 --owner=root --group=root moodbar-updater.pl /usr/local/bin
+	sudo install --mode=555 --owner=root --group=root moodbar-updater-cron.sh /etc/cron.weekly
