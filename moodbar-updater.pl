@@ -26,7 +26,8 @@ use constant DEFAULT_ROOT => '/mnt/media/Music';
 my %suffixes = ('.flac', 1,
 		'.mp3', 1,
 		'.m4a', 1,
-		'.aac', 1);
+		'.aac', 1,
+	        '.ogg', 1);
 
 # Set the umask - we create files with full owner and group settings, but leave
 # everyone else out.
